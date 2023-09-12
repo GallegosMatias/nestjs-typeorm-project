@@ -12,4 +12,8 @@ export class UsersService {
         const newUser = this.userRepository.create(user)
         return this.userRepository.save(newUser)
     }
+
+    GetUsers() {
+        return this.userRepository.find()
+    }
 }
