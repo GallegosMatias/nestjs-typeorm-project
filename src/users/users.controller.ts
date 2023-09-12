@@ -22,7 +22,7 @@ export class UsersController {
     }
 
     @Post()
-    createUser(@Body() newUser: createUserDto): Promise<User> {
+    createUser(@Body() newUser: createUserDto) {
         return this.usersService.createUser(newUser)
 
     }
@@ -36,6 +36,5 @@ export class UsersController {
     updateUser(@Param('id', ParseIntPipe) id: number, @Body() user: updateUserDto) {
         return this.usersService.updateUser(id, user)
     }
-
 
 }
