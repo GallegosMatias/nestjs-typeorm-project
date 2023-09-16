@@ -3,6 +3,7 @@ import { createUserDto } from './dto/create-user.dto';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
 import { updateUserDto } from './dto/update-user.dto';
+import { createProfileDto } from './dto/create-profile.dto';
 
 @Controller('users')
 export class UsersController {
@@ -35,6 +36,14 @@ export class UsersController {
     @Patch(':id')
     updateUser(@Param('id', ParseIntPipe) id: number, @Body() user: updateUserDto) {
         return this.usersService.updateUser(id, user)
+    }
+
+    @Post(':id/profile')
+    createProfile(
+        @Param('id', ParseIntPipe) id:number,
+        @Body() profile: createProfileDto
+    ) {
+        return this.usersService.createProfile(id, profile)
     }
 
 }
