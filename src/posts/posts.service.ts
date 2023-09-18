@@ -26,7 +26,9 @@ export class PostsService {
     }
 
     getPosts() {
-        this.postsRepository.find();
+        return this.postsRepository.find({
+            relations: ['author'],
+        });
 
     }
 
