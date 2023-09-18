@@ -18,7 +18,7 @@ export class PostsService {
     async createPost(post: createPostDto) {
         const userFound = await this.usersService.getUser(post.authorId)
 
-        if(!userFound) new HttpException('User not found!', HttpStatus.NOT_FOUND)
+        if(!userFound) throw new HttpException('User not found!', HttpStatus.NOT_FOUND)
 
         const newPost = this.postsRepository.create(post);
         return this.postsRepository.save(newPost);
